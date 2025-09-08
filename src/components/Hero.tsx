@@ -6,28 +6,28 @@ import Image from 'next/image';
 // Datos del carrusel — puedes moverlos a /data/heroProducts.ts
 const heroProducts = [
   {
-    id: 1,
+    id: '1',
     name: 'Juego de Puntas Intercambiables',
     description:
       'Diseño ergonómico, punta láser y recubrimiento antideslizante.',
     image: '/images/puntas.png',
   },
   {
-    id: 2,
+    id: '2',
     name: 'Lámpara LED PDR 360°',
     description:
       'Iluminación profesional para detectar microabolladuras con precisión.',
     image: '/images/lampara.png',
   },
   {
-    id: 3,
+    id: '3',
     name: 'Kit Glue Pulling Premium',
     description:
       'Incluye 50 adhesivos + 3 extractores. Ideal para abolladuras profundas.',
     image: '/images/kit.png',
   },
   {
-    id: 4,
+    id: '4',
     name: 'Martillo Táctil MB Precision',
     description:
       'Impacto controlado y mango antivibración para trabajo prolongado.',
@@ -79,14 +79,6 @@ const Hero: React.FC = () => {
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
   };
-
-  // Obtiene los productos para el slide actual
-  const getCurrentProducts = () => {
-    const start = currentIndex * productsPerPage;
-    return heroProducts.slice(start, start + productsPerPage);
-  };
-
-  const visibleProducts = getCurrentProducts();
 
   return (
     <section
@@ -158,7 +150,7 @@ const Hero: React.FC = () => {
               // Rellenar con elementos vacíos si no hay suficientes productos
               while (slice.length < productsPerPage) {
                 slice.push({
-                  id: `empty-${slideIndex}-${slice.length}` as any,
+                  id: `empty-${slideIndex}-${slice.length}`,
                   name: '',
                   description: '',
                   image: '',
@@ -171,7 +163,7 @@ const Hero: React.FC = () => {
                   className='flex-shrink-0 w-full flex'
                   style={{ width: `${100 / totalSlides}%` }}
                 >
-                  {slice.map((product, idx) => (
+                  {slice.map((product) => (
                     <div key={product.id} className='w-1/2 px-2'>
                       <div className='bg-white rounded-xl shadow-lg p-4 h-full flex flex-col justify-between transition-transform hover:scale-105'>
                         {product.image && (
