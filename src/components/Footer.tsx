@@ -1,69 +1,147 @@
 import Link from 'next/link';
 import React from 'react';
-import { FaFingerprint } from 'react-icons/fa';
+import { FaInstagram, FaFacebook, FaYoutube, FaWhatsapp } from 'react-icons/fa';
 
 import { siteDetails } from '@/data/siteDetails';
-import { footerDetails } from '@/data/footer';
-import { getPlatformIconByName } from '@/utils';
+import Image from 'next/image';
 
 const Footer: React.FC = () => {
-    return (
-        <footer className="bg-hero-background text-foreground py-10">
-            <div className="max-w-7xl w-full mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div>
-                    <Link href="/" className="flex items-center gap-2">
-                        <FaFingerprint className="min-w-fit w-5 h-5 md:w-7 md:h-7" />
-                        <h3 className="manrope text-xl font-semibold cursor-pointer">
-                            {siteDetails.siteName}
-                        </h3>
-                    </Link>
-                    <p className="mt-3.5 text-foreground-accent">
-                        {footerDetails.subheading}
-                    </p>
-                </div>
-                <div>
-                    <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-                    <ul className="text-foreground-accent">
-                        {footerDetails.quickLinks.map(link => (
-                            <li key={link.text} className="mb-2">
-                                <Link href={link.url} className="hover:text-foreground">{link.text}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-                <div>
-                    <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
+  return (
+    <footer className='bg-gray-900 text-white py-10'>
+      <div className='max-w-7xl w-full mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10'>
+        {/* Columna 1: Sobre MB Herramientas PDR */}
+        <div>
+          {/* <Link href='/' className='flex items-center gap-2'>
+            <h3 className='text-2xl font-bold cursor-pointer'>
+              {siteDetails.siteName}
+            </h3>
+          </Link> */}
 
-                    {footerDetails.email && <a href={`mailto:${footerDetails.email}`}  className="block text-foreground-accent hover:text-foreground">Email: {footerDetails.email}</a>}
+          <Link href='/' className='flex items-center gap-2'>
+            {/* <FaFingerprint className='text-foreground min-w-fit w-7 h-7' /> */}
 
-                    {footerDetails.telephone && <a href={`tel:${footerDetails.telephone}`} className="block text-foreground-accent hover:text-foreground">Phone: {footerDetails.telephone}</a>}
+            <Image
+              alt='Logo'
+              width={40}
+              height={40}
+              src={siteDetails.siteLogoWhite}
+            />
+            <span className='manrope text-white text-xl font-semibold text-foreground cursor-pointer'>
+              {siteDetails.siteName}
+            </span>
+          </Link>
 
-                    {footerDetails.socials && (
-                        <div className="mt-5 flex items-center gap-5 flex-wrap">
-                            {Object.keys(footerDetails.socials).map(platformName => {
-                                if (platformName && footerDetails.socials[platformName]) {
-                                    return (
-                                        <Link
-                                            href={footerDetails.socials[platformName]}
-                                            key={platformName}
-                                            aria-label={platformName}
-                                        >
-                                            {getPlatformIconByName(platformName)}
-                                        </Link>
-                                    )
-                                }
-                            })}
-                        </div>
-                    )}
-                </div>
-            </div>
-            <div className="mt-8 md:text-center text-foreground-accent px-6">
-                <p>Copyright &copy; {new Date().getFullYear()} {siteDetails.siteName}. All rights reserved.</p>
-                <p className="text-sm mt-2 text-gray-500">Made with &hearts; by <a href="https://nexilaunch.com" target="_blank">Nexi Launch</a></p>
-                <p className="text-sm mt-2 text-gray-500">UI kit by <a href="https://ui8.net/youthmind/products/fintech-finance-mobile-app-ui-kit" target="_blank">Youthmind</a></p>
-            </div>
-        </footer>
-    );
+          <p className='mt-4 text-gray-300 leading-relaxed'>
+            Fabricantes de herramientas PDR de alta gama.
+            <br />
+            Córdoba, Argentina.
+            <br />
+            Envíos internacionales.
+          </p>
+        </div>
+
+        {/* Columna 2: Enlaces Rápidos */}
+        <div>
+          <h4 className='text-lg font-semibold mb-4'>Enlaces rápidos</h4>
+          <ul className='text-gray-300 space-y-2'>
+            <li>
+              <Link href='#products' className='hover:text-white transition'>
+                Productos
+              </Link>
+            </li>
+            <li>
+              <Link
+                href='#distributors'
+                className='hover:text-white transition'
+              >
+                Distribuidores
+              </Link>
+            </li>
+            <li>
+              <Link
+                href='#testimonials'
+                className='hover:text-white transition'
+              >
+                Testimonios
+              </Link>
+            </li>
+            <li>
+              <Link href='#about' className='hover:text-white transition'>
+                Sobre Nosotros
+              </Link>
+            </li>
+            <li>
+              <Link href='/terms' className='hover:text-white transition'>
+                Términos y Condiciones
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Columna 3: Contacto + Redes Sociales */}
+        <div>
+          <h4 className='text-lg font-semibold mb-4'>Contacto</h4>
+          <div className='text-gray-300 space-y-2'>
+            <p>📞 +54 9 XXX XXX XXXX</p>
+            <p>
+              ✉️{' '}
+              <a
+                href='mailto:info@mbtools.com.ar'
+                className='hover:text-white transition'
+              >
+                info@mbtools.com.ar
+              </a>
+            </p>
+            <p>🌐 mbtools.com.ar</p>
+          </div>
+
+          {/* Redes Sociales */}
+          <div className='mt-6 flex items-center gap-5'>
+            <a
+              href='https://instagram.com/mbtools_pdr'
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='Instagram'
+            >
+              <FaInstagram className='w-6 h-6 text-white hover:text-pink-500 transition' />
+            </a>
+            <a
+              href='https://facebook.com/mbtoolspdr'
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='Facebook'
+            >
+              <FaFacebook className='w-6 h-6 text-white hover:text-blue-600 transition' />
+            </a>
+            <a
+              href='https://youtube.com/@mbtools_pdr'
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='YouTube'
+            >
+              <FaYoutube className='w-6 h-6 text-white hover:text-red-600 transition' />
+            </a>
+            <a
+              href='https://wa.me/549XXXXXXXXXX'
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='WhatsApp'
+            >
+              <FaWhatsapp className='w-6 h-6 text-white hover:text-green-500 transition' />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Copyright */}
+      <div className='mt-10 pt-6 border-t border-gray-800 text-center text-gray-400'>
+        <p>
+          © {new Date().getFullYear()} MB Herramientas PDR. Todos los derechos
+          reservados.
+        </p>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

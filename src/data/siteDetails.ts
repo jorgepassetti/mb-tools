@@ -1,12 +1,15 @@
 export const siteDetails = {
-    siteName: 'Finwise',
-    siteUrl: 'https://finwise-omega.vercel.app/',
-    metadata: {
-        title: 'Finwise - Next.js and Tailwind CSS Landing Page Template',
-        description: 'Finwise empowers businesses with cutting-edge technology solutions to drive success and efficiency.',
-    },
-    language: 'en-us',
-    locale: 'en-US',
-    siteLogo: `${process.env.BASE_PATH || ''}/images/logo.png`, // or use a string for the logo e.g. "TechStartup"
-    googleAnalyticsId: '', // e.g. G-XXXXXXX,
-}
+  siteName: 'MB Tools',
+  siteUrl: 'https://mbtools.com.ar',
+  metadata: {
+    title:
+      'MB Herramientas PDR - Fábrica de Herramientas PDR de Alta Calidad | Venta Directa',
+    description:
+      'Fabricamos en Argentina herramientas profesionales para reparación sin pintura (PDR). Venta directa de fábrica, envíos a todo el mundo, garantía y atención personalizada. Herramientas hechas por técnicos, para técnicos.',
+  },
+  language: 'es-ar',
+  locale: 'es-AR',
+  siteLogo: `${process.env.BASE_PATH || ''}/images/Vector.png`, // Asegúrate de tener este logo en tu carpeta /public/images
+  siteLogoWhite: `${process.env.BASE_PATH || ''}/images/logo-white.svg`, // Asegúrate de tener este logo en tu carpeta /public/images
+  googleAnalyticsId: '', // Reemplaza con tu ID de Google Analytics si lo tienes, ej: 'G-XXXXXXXXXX'
+};
